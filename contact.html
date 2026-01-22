@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 0;
+      background-color: #3f51b5;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #3f51b5;
+    }
+
+    .contact-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .contact-form {
+      flex: 1;
+      max-width: 50%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .contact-form input[type="submit"] {
+      background-color: #3f51b5;
+      color: white;
+      cursor: pointer;
+      border: none;
+      font-size: 18px;
+      padding: 15px 0;
+      width: 100%;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form input[type="submit"]:hover {
+      background-color: #303f9f;
+    }
+
+    .contact-details {
+      flex: 1;
+      max-width: 40%;
+      background-color: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-details h3 {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .contact-details p {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .map-container {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #3f51b5;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .contact-content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .contact-form, .contact-details {
+        max-width: 100%;
+      }
+    }
+
+    .success-message {
+      background-color: #4caf50;
+      color: white;
+      padding: 15px;
+      border-radius: 6px;
+      text-align: center;
+      display: none;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you! Get in touch with us for any inquiries.</p>
+  </header>
+
+  <div class="container">
+    <!-- Contact Form Section -->
+    <section>
+      <h2 class="section-title">Get in Touch</h2>
+      <div class="contact-content">
+        <div class="contact-form">
+          <form id="contact-form" action="javascript:void(0);" method="POST">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" placeholder="Type your message" required></textarea>
+
+            <input type="submit" value="Send Message">
+          </form>
+
+          <!-- Success Message -->
+          <div id="success-message" class="success-message">
+            <p>Thank you for reaching out! We will get back to you shortly.</p>
+          </div>
+        </div>
+
+        <!-- Contact Details Section -->
+        <div class="contact-details">
+          <h3>Our Office</h3>
+          <p><strong>Address:</strong> 123 Albertina Sisulu Road, Johannesburg, South Africa</p>
+          <p><strong>Email:</strong> info@nareseema.com</p>
+          <p><strong>Phone:</strong> +27 732 991 975</p>
+           <p><strong>Working Hours:</strong> Monday - Friday, 9 AM - 6 PM</p>
+        </div>
+      </div>
+
+     
+      <div class="map-container">
+        <h3>Find Us</h3>
+        <iframe scr="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d114584.91033200632!2d27.957622309325433!3d-26.1713439729892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c68f0406a51%3A0x238ac9d9b1d34041!2sJohannesburg!5e0!3m2!1sen!2sza!4v1763099718770!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>"
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Seema Nare | All Rights Reserved</p>
+  </footer>
+  
+
+  <script>
+    // Get form elements and success message
+    const form = document.getElementById('contact-form');
+    const successMessage = document.getElementById('success-message');
+
+    // Form submission handler
+    form.addEventListener('submit', function (event) {
+      event.preventDefault(); 
+      
+      successMessage.style.display = 'block'; // Show the success message
+      form.reset(); // Clear the form fields
+    });
+  </script>
+
+  <a href="index.html" class="bact-btn"> Back To HomePage</a>
+
+</body>
+</html>

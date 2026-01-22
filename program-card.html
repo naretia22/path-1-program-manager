@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program Card Layout</title>
+
+    <style>
+        /* Container layout */
+        .program-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            padding: 20px;
+            background: #f2f2f2;
+        }
+
+        /* Each card */
+        .program-card {
+            background: white;
+            width: 30%;
+            min-width: 250px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Image settings */
+        .program-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        /* Text styling */
+        .program-card h3 {
+            margin: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .program-card p {
+            margin: 0 15px 10px 15px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        /* Hover effect */
+        .program-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        }
+
+        /* Mobile view */
+        @media (max-width: 768px) {
+            .program-card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="text-align:center; margin-top:20px;">Our Program Schedule</h1>
+
+    <div class="program-container">
+
+        <div class="program-card">
+            <img src="morningshow.jpg" alt="Program Image">
+            <h3>Morning Show</h3>
+            <p>Duration: 2 hours</p>
+            <p>Time: 08:00 - 10:00</p>
+        </div>
+
+        <div class="program-card">
+            <img src="musicvibes.jpg" alt="Program Image">
+            <h3>Music Vibes</h3>
+            <p>Duration: 1 hour</p>
+            <p>Time: 10:00 - 11:00</p>
+        </div>
+
+        <div class="program-card">
+            <img src="lunchbreak.jpg" alt="Program Image">
+            <h3>Lunch Break Live</h3>
+            <p>Duration: 2 hours</p>
+            <p>Time: 12:00 - 14:00</p>
+        </div>
+
+        <div class="program-card">
+            <img src="drivetime.jpg" alt="Program Image">
+            <h3>Drive Time</h3>
+            <p>Duration: 3 hours</p>
+            <p>Time: 15:00 - 18:00</p>
+        </div>
+
+        <div class="program-card">
+            <img src="eveningtalk.png" alt="Program Image">
+            <h3>Evening Talk</h3>
+            <p>Duration: 1 hour</p>
+            <p>Time: 18:00 - 19:00</p>
+        </div>
+
+        <div class="program-card">
+            <img src="nightmix.png" alt="Program Image">
+            <h3>Night Mix</h3>
+            <p>Duration: 2 hours</p>
+            <p>Time: 20:00 - 22:00</p>
+        </div>
+        <a href="index.html" class="bact-btn"> Back To HomePage</a>
+
+    </div>
+
+</body>
+</html>
+

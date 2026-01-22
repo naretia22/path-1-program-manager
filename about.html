@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us</title>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 50px 0;
+      background-color: #E61AC3;
+      color: white;
+    }
+
+    header h1 {
+      font-size: 36px;
+      margin: 0;
+    }
+
+    header p {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #3f51b5;
+    }
+
+    .about-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .about-text {
+      flex: 1;
+      max-width: 50%;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .about-image {
+      flex: 1;
+      max-width: 50%;
+      text-align: center;
+    }
+
+    .about-image img {
+      width: 80%;
+      border-radius: 8px;
+    }
+
+    .mission, .values {
+      display: flex;
+      gap: 50px;
+      justify-content: space-between;
+      margin-bottom: 50px;
+    }
+
+    .mission-text, .values-text {
+      width: 45%;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .values-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .values-list li {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background-color: #E61AC3;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .about-text, .about-image {
+        max-width: 100%;
+      }
+
+      .mission, .values {
+        flex-direction: column;
+      }
+
+      .mission-text, .values-text {
+        width: 100%;
+      }
+
+      
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>About Us</h1>
+    <p>Learn more about our mission, team, and values.</p>
+  </header>
+
+  <div class="container">
+    <!-- About Content Section -->
+    <section>
+      <h2 class="section-title">Who We Are</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>We are a passionate team committed to delivering the best experiences for our users. Our goal is to provide innovative solutions and services that help individuals and businesses thrive. We believe in the power of technology to make a positive impact on the world.</p>
+        </div>
+        <div class="about-image">
+          <img src="team.jpg" alt="Team Image">
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section>
+      <h2 class="section-title">Our Mission</h2>
+      <div class="mission">
+        <div class="mission-text">
+          <p>Our mission is to make a difference in the world by providing cutting-edge technology solutions. We strive to create products that not only solve problems but also enhance the lives of our customers. We believe in sustainability, innovation, and collaboration.</p>
+        </div>
+        <div class="mission-text">
+          <p>Our team works tirelessly to ensure that our services are accessible, efficient, and impactful. We aim to empower individuals and organizations by equipping them with the tools they need to succeed in the digital age.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Section -->
+    <section>
+      <h2 class="section-title">Our Values</h2>
+      <div class="values">
+        <div class="values-text">
+          <p>We uphold the following core values that guide our decisions and actions:</p>
+        </div>
+        <div class="values-text">
+          <ul class="values-list">
+            <li>Integrity: We are honest and transparent in all our dealings.</li>
+            <li>Innovation: We embrace new ideas and strive for continuous improvement.</li>
+            <li>Collaboration: We believe in working together to achieve greater outcomes.</li>
+            <li>Customer Focus: Our users are at the center of everything we do.</li>
+            <li>Sustainability: We are committed to making a positive impact on the environment and society.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+  <a href="index.html" class="bact-btn"> Back To HomePage</a>
+
+  <footer>
+    <p>&copy; 2025 Nare Seema | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

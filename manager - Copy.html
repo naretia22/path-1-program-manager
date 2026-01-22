@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>B.PManager</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+        padding: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    input, select, button {
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+
+    button {
+        background: #2575fc;
+        color: white;
+        cursor: pointer;
+        border: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background: #6a11cb;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background: #2575fc;
+        color: white;
+    }
+
+    td button {
+        padding: 5px 10px;
+        margin: 0 2px;
+    }
+
+    .error {
+        color: red;
+        font-size: 13px;
+    }
+
+    .search-box {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+
+<h1>Broadcast Program Manager</h1>
+
+<div class="container">
+
+    <!-- Search/Filter -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search by program name...">
+    </div>
+
+    <!-- Program Form -->
+    <h3>Add / Edit Program</h3>
+    <form id="programForm">
+        <input type="hidden" id="programId">
+        <input type="text" id="programName" placeholder="Program Name">
+        <input type="text" id="programHost" placeholder="Host Name">
+        <input type="text" id="programTime" placeholder="Time (e.g., 18:00)">
+        <div class="error" id="formError"></div>
+        <button type="submit">Save Program</button>
+    </form>
+
+    <!-- Programs Table -->
+    <table id="programTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Host</th>
+                <th>Time</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Program rows will appear here -->
+        </tbody>
+    </table>
+
+</div>
+
+<script>
+    let programs = JSON.parse(localStorage.getItem('programs')) || [];
+
+    const programForm = document.getElementById('programForm');
+    const programId = document.getElementById('programId');
+    const programName = document.getElementById('programName');
+    const programHost = document.getElementById('programHost');
+    const programTime = document.getElementById('programTime');
+    const formError = document.getElementById('formError');
+    const programTable = document.getElementById('programTable').getElementsByTagName('tbody')[0];
+    const searchInput = document.getElementById('searchInput');
+
+    // Display programs on load
+    displayPrograms(programs);
+
+    // Add / Edit program
+    programForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        formError.textContent = '';
+
+        const name = programName.value.trim();
+        const host = programHost.value.trim();
+        const time = programTime.value.trim();
+
+        if(!name || !host || !time){
+            formError.textContent = 'All fields are required!';
+            return;
+        }
+
+        const id = programId.value;
+
+        if(id){ // Edit existing program
+            const index = programs.findIndex(p => p.id == id);
+            if(index !== -1){
+                programs[index].name = name;
+                programs[index].host = host;
+                programs[index].time = time;
+            }
+        } else { // Add new program
+            const newProgram = {
+                id: Date.now(),
+                name,
+                host,
+                time
+            };
+            programs.push(newProgram);
+        }
+
+        localStorage.setItem('programs', JSON.stringify(programs));
+        programForm.reset();
+        programId.value = '';
+        displayPrograms(programs);
+    });
+
+    // Display programs
+    function displayPrograms(list){
+        programTable.innerHTML = '';
+        list.forEach(program => {
+            const row = programTable.insertRow();
+            row.insertCell(0).textContent = program.name;
+            row.insertCell(1).textContent = program.host;
+            row.insertCell(2).textContent = program.time;
+
+            const actionsCell = row.insertCell(3);
+
+            // Edit button
+            const editBtn = document.createElement('button');
+            editBtn.textContent = 'Edit';
+            editBtn.addEventListener('click', () => editProgram(program.id));
+            actionsCell.appendChild(editBtn);
+
+            // Delete button
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.style.background = 'red';
+            deleteBtn.addEventListener('click', () => deleteProgram(program.id));
+            actionsCell.appendChild(deleteBtn);
+        });
+    }
+
+    // Edit program
+    function editProgram(id){
+        const program = programs.find(p => p.id == id);
+        if(program){
+            programId.value = program.id;
+            programName.value = program.name;
+            programHost.value = program.host;
+            programTime.value = program.time;
+        }
+    }
+
+    // Delete program
+    function deleteProgram(id){
+        if(confirm('Are you sure you want to delete this program?')){
+            programs = programs.filter(p => p.id != id);
+            localStorage.setItem('programs', JSON.stringify(programs));
+            displayPrograms(programs);
+        }
+    }
+
+    // Search/filter
+    searchInput.addEventListener('input', function(){
+        const query = this.value.toLowerCase();
+        const filtered = programs.filter(p => p.name.toLowerCase().includes(query));
+        displayPrograms(filtered);
+    });
+
+</script>
+
+<a href="index.html" class="bact-btn"> Back To HomePage</a>
+</body>
+</html>

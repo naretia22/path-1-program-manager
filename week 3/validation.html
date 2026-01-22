@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        input, button {
+            padding: 10px;
+            width: 250px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .success {
+            color: green;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Validation Form</h2>
+
+    <form id="myForm">
+        <label>Name:</label>
+        <input type="text" id="name">
+        <div id="nameError" class="error"></div>
+
+        <label>Email:</label>
+        <input type="text" id="email">
+        <div id="emailError" class="error"></div>
+
+        <label>Password:</label>
+        <input type="password" id="password">
+        <div id="passwordError" class="error"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="successMessage" class="success"></div>
+
+<script>
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+
+        // Get input values
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let password = document.getElementById("password").value.trim();
+
+        // Error message fields
+        let nameError = document.getElementById("nameError");
+        let emailError = document.getElementById("emailError");
+        let passwordError = document.getElementById("passwordError");
+        let successMessage = document.getElementById("successMessage");
+
+        // Clear previous errors
+        nameError.textContent = "";
+        emailError.textContent = "";
+        passwordError.textContent = "";
+        successMessage.textContent = "";
+
+        let isValid = true;
+
+        // Validate name
+        if (name === "") {
+            nameError.textContent = "Name is required";
+            isValid = false;
+        }
+
+        // Validate email
+        if (email === "") {
+            emailError.textContent = "Email is required";
+            isValid = false;
+        } else if (!email.includes("@")) {
+            emailError.textContent = "Email must contain '@'";
+            isValid = false;
+        }
+
+        // Validate password
+        if (password === "") {
+            passwordError.textContent = "Password is required";
+            isValid = false;
+        }
+
+        // Stop form from submitting if invalid
+        if (!isValid) {
+            event.preventDefault();
+            return;
+        }
+
+        // FORM IS VALID ✔
+        event.preventDefault(); // Prevent page reload for demo
+
+        successMessage.textContent = "Form submitted successfully! ✔";
+
+        // CLEAR FORM AFTER SUCCESS
+        document.getElementById("myForm").reset();
+    });
+</script>
+
+<a href="index.html" class="bact-btn"> Back To HomePage</a>
+</body>
+</html>
