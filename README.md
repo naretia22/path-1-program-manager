@@ -24,4 +24,4 @@ Searchand filter programs by name
 -localStorage
 
 ## Author 
-Nare Seema
+Naretia Seema
